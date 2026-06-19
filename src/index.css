@@ -16,8 +16,12 @@
 
   --brass: #c79b4b;
   --brass-dim: #9c7a3a;
+  --brass-light: #d8b36b;
   --sage: #6fae7b;
+  --sage-light: #9fd1aa;
   --rust: #c97a63;
+  --rust-light: #e0a38c;
+  --slate: #7fa8c9;
 
   --font-display: 'IBM Plex Serif', Georgia, serif;
   --font-body: 'IBM Plex Sans', system-ui, sans-serif;
