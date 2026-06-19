@@ -1,0 +1,2 @@
+- [Project shape](project_shape.md) — expense tracker course repo; CLAUDE.md is authoritative on architecture/state-ownership, check it first.
+- [Theme tokens pattern](css_theme_tokens.md) — CSS custom properties in index.css drive the design system; watch for drift into JS color literals (e.g. recharts).
