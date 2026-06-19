@@ -3,6 +3,7 @@ import './App.css'
 
 
 import Summary from './Summary'
+import SpendingChart from './SpendingChart'
 import TransactionForm from './TransactionForm'
 import TransactionList from './TransactionList'
 
@@ -41,6 +42,8 @@ function App() {
       <p className="subtitle">Track your income and expenses</p>
 
       <Summary totalIncome={totalIncome} totalExpenses={totalExpenses} balance={balance} />
+
+      <SpendingChart transactions={transactions} />
 
       <TransactionForm categories={categories} onAddTransaction={handleAddTransaction} />
 
