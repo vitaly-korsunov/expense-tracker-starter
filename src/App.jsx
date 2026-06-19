@@ -35,19 +35,30 @@ function App() {
     setTransactions([...transactions, newTransaction]);
   };
 
+  const handleDeleteTransaction = (id) => {
+    setTransactions(transactions.filter(t => t.id !== id));
+  };
+
 
   return (
     <div className="app">
-      <h1>Finance Tracker</h1>
-      <p className="subtitle">Track your income and expenses</p>
+      <header className="app-header">
+        <div className="app-header-inner">
+          <p className="eyebrow">Personal Ledger</p>
+          <h1>Finance Tracker</h1>
+          <p className="subtitle">Track your income and expenses</p>
+        </div>
+      </header>
 
-      <Summary totalIncome={totalIncome} totalExpenses={totalExpenses} balance={balance} />
+      <main className="app-body">
+        <Summary totalIncome={totalIncome} totalExpenses={totalExpenses} balance={balance} />
 
-      <SpendingChart transactions={transactions} />
+        <SpendingChart transactions={transactions} />
 
-      <TransactionForm categories={categories} onAddTransaction={handleAddTransaction} />
+        <TransactionForm categories={categories} onAddTransaction={handleAddTransaction} />
 
-      <TransactionList transactions={transactions} categories={categories} />
+        <TransactionList transactions={transactions} categories={categories} onDeleteTransaction={handleDeleteTransaction} />
+      </main>
     </div>
   );
 }

@@ -4,8 +4,46 @@
   box-sizing: border-box;
 }
 
+:root {
+  --ink: #16231d;
+  --ink-soft: #21342b;
+  --ink-line: rgba(255, 255, 255, 0.1);
+  --vellum-text: #ece7d6;
+  --vellum-text-faint: #aab8ac;
+
+  --paper: #e7eae0;
+  --paper-raised: #f6f7f1;
+  --paper-line: #d7dccb;
+
+  --ink-text: #1b2a22;
+  --ink-faint: #5b6b60;
+
+  --brass: #b68a3b;
+  --brass-dim: #8c6b2e;
+  --sage: #4f7858;
+  --rust: #9c4a36;
+
+  --font-display: 'IBM Plex Serif', Georgia, serif;
+  --font-body: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  background-color: #ffffff;
-  color: #333;
+  font-family: var(--font-body);
+  background-color: var(--paper);
+  color: var(--ink-text);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
 }
