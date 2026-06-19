@@ -16,9 +16,13 @@ npm run dev      # start Vite dev server at http://localhost:5173
 npm run build    # production build (outputs to dist/)
 npm run preview  # preview the production build locally
 npm run lint     # run ESLint over the project
+npm test         # run the Vitest suite once (CI mode)
+npm run test:watch  # run Vitest in watch mode
 ```
 
-There is no test runner configured in this project (no test script, no test framework dependency).
+Testing uses Vitest + React Testing Library (`@testing-library/react`, `@testing-library/jest-dom`). Config lives in the `test` block of `vite.config.js` (jsdom environment, globals enabled, setup file at `src/setupTests.js`). Test files live alongside source as `*.test.jsx`.
+
+A `/deploy` skill (`.claude/skills/deploy/SKILL.md`) runs tests → build → pushes the current branch to the `staging` branch on `origin`.
 
 ## Architecture
 
