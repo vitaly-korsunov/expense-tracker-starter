@@ -4,9 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project overview
 
-This is the starter project for a Claude Code course (codewithmosh.com). It's a small React + Vite expense tracker that **intentionally contains a bug, poor UI, and messy code** — these are meant to be found and fixed during the course, not pre-emptively cleaned up unless asked.
+This is the starter project for a Claude Code course (codewithmosh.com). It's a small React + Vite expense tracker that originally **intentionally contained a bug, poor UI, and messy code**, meant to be found and fixed during the course rather than pre-emptively cleaned up. The codebase evolves as the course progresses — check `git log` for what's already been addressed before assuming something is still broken or unstructured.
 
-Known intentional bug: transaction `amount` values are stored/handled as strings (seed data uses string literals like `"5000"`, and the add-transaction form takes the raw string from the number input). The income/expense totals in `App.jsx` use `reduce((sum, t) => sum + t.amount, 0)`, which string-concatenates amounts instead of summing them numerically.
+Fixed so far: transaction `amount` values were originally stored/handled as strings, making the `reduce`-based income/expense totals string-concatenate instead of sum numerically. Amounts are now stored as numbers (seed data and the add-transaction form both produce numeric `amount`).
 
 ## Commands
 
@@ -22,11 +22,13 @@ There is no test runner configured in this project (no test script, no test fram
 
 ## Architecture
 
-This is a single-component app — there is no router, no state management library, and no backend/persistence layer. Everything lives in-memory via `useState` and resets on page reload.
+There is no router, no state management library, and no backend/persistence layer. Everything lives in-memory via `useState` and resets on page reload.
 
 - `src/main.jsx` — entry point; mounts `<App />` into `#root` inside `StrictMode`.
-- `src/App.jsx` — the entire application: transaction state (seeded with hardcoded sample data), the add-transaction form, type/category filters, and the summary/table rendering all live in this one component. Derived values (`totalIncome`, `totalExpenses`, `balance`, `filteredTransactions`) are recomputed inline on every render rather than memoized.
-- `src/App.css` / `src/index.css` — plain CSS, no CSS-in-JS or utility framework.
-- Categories are a hardcoded array (`food`, `housing`, `utilities`, `transport`, `entertainment`, `salary`, `other`) duplicated across the add-transaction and filter selects.
+- `src/App.jsx` — owns the source-of-truth `transactions` state (seeded with hardcoded sample data) and the shared `categories` array (`food`, `housing`, `utilities`, `transport`, `entertainment`, `salary`, `other`). Computes `totalIncome`/`totalExpenses`/`balance` inline (not memoized) and passes them down, along with an `onAddTransaction` callback that appends to `transactions`.
+- `src/Summary.jsx` — presentational; renders the income/expense/balance cards from props.
+- `src/TransactionForm.jsx` — owns its own field state (`description`, `amount`, `type`, `category`); on submit, builds the transaction object and calls `onAddTransaction` rather than touching `transactions` directly.
+- `src/TransactionList.jsx` — owns its own filter state (`filterType`, `filterCategory`); derives `filteredTransactions` from the `transactions` prop and renders the filter selects + table.
+- `src/App.css` / `src/index.css` — plain CSS, no CSS-in-JS or utility framework. Note: `.delete-btn` is defined in `App.css` but not yet used anywhere in JSX — likely scaffolding for a not-yet-implemented delete feature.
 
-When making changes, keep in mind there's no separation between presentation and logic yet — splitting components, extracting hooks, or introducing state management are exactly the kinds of refactors this course walks through, so don't assume a "correct" architecture is already in place.
+State ownership pattern: `App` holds data that's shared across components (`transactions`); each child owns state that's purely local to itself (form fields, filters) and only talks to `App` via the `onAddTransaction` callback prop. Keep this pattern when adding new features rather than lifting everything into `App`.
