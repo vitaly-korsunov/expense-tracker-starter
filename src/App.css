@@ -6,13 +6,6 @@
 
 .app-header {
   background: var(--ink);
-  background-image: repeating-linear-gradient(
-    to bottom,
-    transparent 0,
-    transparent 27px,
-    var(--ink-line) 27px,
-    var(--ink-line) 28px
-  );
   padding: 40px 20px 36px;
 }
 
@@ -32,13 +25,13 @@
 
 .app-header h1 {
   font-size: 34px;
-  color: var(--vellum-text);
+  color: var(--text);
   margin-bottom: 6px;
 }
 
 .app-header .subtitle {
   font-family: var(--font-body);
-  color: var(--vellum-text-faint);
+  color: var(--text-faint);
   font-size: 15px;
 }
 
@@ -55,7 +48,7 @@
 
 h2 {
   font-size: 17px;
-  color: var(--ink-text);
+  color: var(--text);
   margin-bottom: 14px;
 }
 
@@ -68,8 +61,8 @@ h2 {
 
 .summary-card {
   flex: 1;
-  background: var(--paper-raised);
-  border: 1px solid var(--paper-line);
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 8px;
   padding: 16px 18px;
 }
@@ -79,7 +72,7 @@ h2 {
   font-size: 11px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--ink-faint);
+  color: var(--text-faint);
   font-weight: 500;
   margin-bottom: 8px;
 }
@@ -106,7 +99,7 @@ h2 {
 }
 
 .balance-amount {
-  color: var(--ink-text);
+  color: var(--text);
   display: inline-block;
   padding-bottom: 6px;
   border-bottom: 4px double var(--brass-dim);
@@ -115,22 +108,22 @@ h2 {
 /* ---------- Spending chart ---------- */
 
 .spending-chart {
-  background: var(--paper-raised);
-  border: 1px solid var(--paper-line);
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 8px;
   padding: 18px 20px;
 }
 
 .spending-chart p {
-  color: var(--ink-faint);
+  color: var(--text-faint);
   font-size: 14px;
 }
 
 /* ---------- Add transaction ---------- */
 
 .add-transaction {
-  background: var(--paper-raised);
-  border: 1px solid var(--paper-line);
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 8px;
   padding: 18px 20px;
 }
@@ -153,7 +146,7 @@ h2 {
   font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--ink-faint);
+  color: var(--text-faint);
 }
 
 .field-description {
@@ -175,10 +168,10 @@ h2 {
 .entry-form input,
 .entry-form select {
   padding: 9px 10px;
-  border: 1px solid var(--paper-line);
+  border: 1px solid var(--border);
   border-radius: 6px;
-  background: #fff;
-  color: var(--ink-text);
+  background: var(--ink);
+  color: var(--text);
   font-family: var(--font-body);
   font-size: 14px;
 }
@@ -195,8 +188,8 @@ h2 {
 
 .entry-form button {
   padding: 10px 22px;
-  background: var(--ink);
-  color: var(--vellum-text);
+  background: var(--brass);
+  color: var(--ink);
   border: none;
   border-radius: 6px;
   cursor: pointer;
@@ -207,19 +200,19 @@ h2 {
 }
 
 .entry-form button:hover {
-  background: var(--ink-soft);
+  background: var(--brass-dim);
 }
 
 .entry-form button:focus-visible {
-  outline: 2px solid var(--brass);
+  outline: 2px solid var(--text);
   outline-offset: 2px;
 }
 
 /* ---------- Transactions ---------- */
 
 .transactions {
-  background: var(--paper-raised);
-  border: 1px solid var(--paper-line);
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 8px;
   padding: 18px 20px;
 }
@@ -232,10 +225,10 @@ h2 {
 
 .filters select {
   padding: 7px 10px;
-  border: 1px solid var(--paper-line);
+  border: 1px solid var(--border);
   border-radius: 6px;
-  background: #fff;
-  color: var(--ink-text);
+  background: var(--ink);
+  color: var(--text);
   font-family: var(--font-body);
   font-size: 13px;
 }
@@ -260,14 +253,14 @@ table {
 }
 
 thead {
-  border-bottom: 2px solid var(--ink-text);
+  border-bottom: 2px solid var(--text);
 }
 
 th,
 td {
   padding: 11px 10px;
   text-align: left;
-  border-bottom: 1px solid var(--paper-line);
+  border-bottom: 1px solid var(--border);
   font-size: 14px;
 }
 
@@ -275,7 +268,7 @@ th {
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.08em;
-  color: var(--ink-faint);
+  color: var(--text-faint);
   text-transform: uppercase;
 }
 
@@ -283,7 +276,7 @@ th {
 .cell-category {
   font-family: var(--font-mono);
   font-size: 13px;
-  color: var(--ink-faint);
+  color: var(--text-faint);
 }
 
 .cell-category {
@@ -297,7 +290,7 @@ td.expense-amount {
 
 .empty-row td {
   text-align: center;
-  color: var(--ink-faint);
+  color: var(--text-faint);
   padding: 28px 10px;
   font-style: italic;
 }
@@ -305,12 +298,12 @@ td.expense-amount {
 .delete-btn {
   padding: 5px 12px;
   background: transparent;
-  border: 1px solid var(--paper-line);
+  border: 1px solid var(--border);
   border-radius: 6px;
   cursor: pointer;
   font-size: 12px;
   font-family: var(--font-body);
-  color: var(--ink-faint);
+  color: var(--text-faint);
   transition: color 150ms ease, border-color 150ms ease;
 }
 
